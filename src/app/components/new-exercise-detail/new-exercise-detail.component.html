@@ -1,0 +1,45 @@
+<div class="card border-secondary">
+  <div class="card-body">
+
+    <div class="form-group">
+      <label for="inputExercise">Exercise Name</label>
+      <input class="form-control" type="text" id="inputExercise"
+             placeholder="Bench Press" [(ngModel)]="exercise.name" required
+             #inputExercise="ngModel">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label for="inputSets">Sets</label>
+        <input class="form-control" type="text" id="inputSets" placeholder="4"
+               [(ngModel)]="exercise.sets">
+      </div>
+      <div class="form-group col-6">
+        <label for="inputReps">Reps</label>
+        <input class="form-control" type="text" id="inputReps" placeholder="10"
+               [(ngModel)]="exercise.reps">
+      </div>
+    </div>
+
+    <div class="form-check">
+      <label class="form-check-label">
+        <input #youtubeCheckbox class="form-check-input" type="checkbox"
+               (change)="toggleCheckbox(youtubeCheckbox)">
+        Add Youtube URL
+      </label>
+    </div>
+
+    <div *ngIf="youtubeCheckbox.checked" class="form-group">
+      <input class="form-control" type="text"
+             placeholder="https://youtu.be/8vcSr1yVvXQ"
+             [(ngModel)]="exercise.embed" name="name" [required]="youtubeCheckbox.checked">
+    </div>
+    <div class="form-row d-flex justify-content-center">
+      <div class="col-8">
+        <button (click)="addNewExercise(youtubeCheckbox)" class="btn btn-secondary w-100">
+          Add New Exercise
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

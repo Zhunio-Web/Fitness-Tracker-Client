@@ -1,0 +1,54 @@
+<!-- Main Container -->
+<div id="main-container">
+
+  <!-- Image Container -->
+  <div class="image-size">
+    <img class="img-fluid" src="/assets/img/banner-lady-gym.jpg">
+  </div>
+
+  <!-- Login container -->
+  <div class="container-fluid">
+    <div class="row justify-content-sm-left justify-content-md-center">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+
+        <!-- Login Panel Placeholder -->
+        <div id="login-panel-placeholder">
+
+          <!-- Login Form -->
+          <form>
+
+            <div class="form-group">
+              <label for="inputLoginID">Username or Email
+                address</label>
+              <input type="text" name="loginID" class="form-control"
+                     id="inputLoginID"
+                     placeholder="Zhunio"
+                     pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+(@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)?$"
+                     required>
+            </div>
+
+            <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" name="password"
+                     class="form-control" id="inputPassword"
+                     placeholder="Password"
+                     required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Login Registration Toggle -->
+        <div id="login-registration-toggle">
+          <p class="mb-0">New? <a routerLink="/register">Register!</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap";
+@import "variables";
+
+// Global Styles
+body {
+    background: $background-color;
+}
+
+.card {
+  background-color: #f8f9fa;
+}

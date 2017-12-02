@@ -1,0 +1,33 @@
+<div *ngIf="!!workout">
+  <div class="row">
+    <div class="col-12 col-md-8 m-auto">
+      <div class="card">
+        <img *ngIf="pictureExists()" class="card-img-top"
+             src="{{workout.picture}}"
+             alt="{{workout.name}}">
+        <iframe *ngIf="videoExists()" class="card-img-top" height="200"
+                [src]="getVideoUrl()" allowfullscreen></iframe>
+        <div class="card-body p-2 bg-info">
+          <h4 class="card-title m-0" style="color: #002339;">{{workout.name}}
+            Workout</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item d-flex p-2 bg-light">
+            <h5 class="m-0" style="width: 50%">Exercises</h5>
+            <h5 class="m-0" style="width: 25%">Sets</h5>
+            <h5 class="m-0" style="width: 25%">Reps</h5>
+          </li>
+        </ul>
+        <ul class="list-group list-group-flush bg-light">
+          <li class="list-group-item d-flex p-2 bg-light"
+              *ngFor="let exercise of workout.exercises"
+              (click)="loadVideo(exercise.embed)">
+            <p class="m-0" style="width: 50%">{{exercise.name}}</p>
+            <p class="m-0" style="width: 25%">{{exercise.sets}}</p>
+            <p class="m-0" style="width: 25%">{{exercise.reps}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
