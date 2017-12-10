@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-12 col-md-8 m-auto">
       <div class="card">
-        <img *ngIf="pictureExists()" class="card-img-top"
+        <img *ngIf="pictureExists()" class="card-img-top" height="250px"
              src="{{workout.picture}}"
              alt="{{workout.name}}">
-        <iframe *ngIf="videoExists()" class="card-img-top" height="200"
+        <iframe *ngIf="videoExists()" class="card-img-top" height="250px"
                 [src]="getVideoUrl()" allowfullscreen></iframe>
         <div class="card-body p-2 bg-info">
           <h4 class="card-title m-0" style="color: #002339;">{{workout.name}}
@@ -19,9 +19,10 @@
           </li>
         </ul>
         <ul class="list-group list-group-flush bg-light">
-          <li class="list-group-item d-flex p-2 bg-light"
+          <li class="list-group-item d-flex p-2 bg-light workout-detail exercise-selected"
               *ngFor="let exercise of workout.exercises"
-              (click)="loadVideo(exercise.embed)">
+              (click)="loadVideo(exercise)"
+              [ngClass]="{'exercise-selected': isExecise(exercise)}">
             <p class="m-0" style="width: 50%">{{exercise.name}}</p>
             <p class="m-0" style="width: 25%">{{exercise.sets}}</p>
             <p class="m-0" style="width: 25%">{{exercise.reps}}</p>

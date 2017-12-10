@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/scss/bootstrap";
 @import "variables";
 
@@ -8,4 +9,16 @@ body {
 
 .card {
   background-color: #f8f9fa;
+}
+
+.server-response-success {
+  background-color: #28a745;
+}
+
+.valid:not(form)  {
+  border-left: 5px solid #42A948 !important; /* green */
+}
+
+.invalid:not(form)  {
+  border-left: 5px solid #a94442 !important; /* red */
 }

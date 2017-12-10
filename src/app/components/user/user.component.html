@@ -1,0 +1,48 @@
+<div class="row justify-content-sm-left justify-content-md-center">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+
+    <div class="card">
+
+      <div *ngIf="form">
+        <!-- Registration Form -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="card-body">
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="inputFirstName">First Name</label>
+              <input type="text" class="form-control" id="inputFirstName" placeholder="First Name"
+                     formControlName="firstName"
+                     [(ngModel)]="user.firstName"
+                     [ngClass]="{'valid': isValid('firstName'), 'invalid': isInvalid('firstName')}">
+            </div>
+            <div class="form-group col-6">
+              <label for="inputLastName">Last Name</label>
+              <input type="text" class="form-control" id="inputLastName" placeholder="Last Name"
+                     formControlName="lastName"
+                     [(ngModel)]="user.lastName"
+                     [ngClass]="{'valid': isValid('lastName'), 'invalid': isInvalid('lastName')}">
+            </div>
+
+            <div class="form-check mt-3">
+              <label class="form-check-label">
+                <input #trainerCheckbox class="form-check-input" type="checkbox"
+                       formControlName="isTrainer"
+                       [(ngModel)]="user.isTrainer">
+                Become a trainer
+              </label>
+              <div class="alert alert-info p-2" role="alert" *ngIf="trainerCheckbox.checked">
+                Go to Workouts tab and begin adding new workouts
+              </div>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn btn-success btn-block">Update</button>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

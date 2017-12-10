@@ -1,13 +1,13 @@
-<!-- Main Container -->
-<div id="main-container">
+<!--&lt;!&ndash; Main Container &ndash;&gt;-->
+<!--<div id="main-container">-->
 
-  <!-- Image Container -->
-  <div class="image-size">
-    <img class="img-fluid" src="/assets/img/banner-lady-gym.jpg">
-  </div>
+  <!--&lt;!&ndash; Image Container &ndash;&gt;-->
+  <!--<div class="image-size">-->
+    <!--<img class="img-fluid" src="/assets/img/banner-lady-gym.jpg">-->
+  <!--</div>-->
 
-  <!-- Login container -->
-  <div class="container-fluid">
+  <!--&lt;!&ndash; Login container &ndash;&gt;-->
+  <!--<div class="container-fluid">-->
     <div class="row justify-content-sm-left justify-content-md-center">
       <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
 
@@ -24,6 +24,7 @@
                      id="inputLoginID"
                      placeholder="Zhunio"
                      pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+(@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*)?$"
+                     [(ngModel)]="user.email"
                      required>
             </div>
 
@@ -32,10 +33,11 @@
               <input type="password" name="password"
                      class="form-control" id="inputPassword"
                      placeholder="Password"
+                     [(ngModel)]="user.password"
                      required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit
+            <button (click)="login()" type="submit" class="btn btn-primary">Submit
             </button>
 
           </form>
@@ -49,6 +51,6 @@
 
       </div>
     </div>
-  </div>
+  <!--</div>-->
 
-</div>
+<!--</div>-->

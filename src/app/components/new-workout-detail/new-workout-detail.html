@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-3">
   <div class="card-body">
 
     <h4 class="card-title">New Workout</h4>
@@ -36,7 +36,7 @@
         </label>
       </div>
       <div *ngIf="pictureCheckbox.checked" class="form-group">
-        <input class="form-control" type="text" name="name"
+        <input class="form-control" type="text" name="picture"
                placeholder="http://myimage.com/shoulders.jpeg"
                [(ngModel)]="newWorkout.picture" [required]="pictureCheckbox.checked">
       </div>

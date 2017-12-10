@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { WebService } from '../../services/web.service';
 
 @Component( {
   selector: 'app-nav',
   template: `
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <!-- Main Navigation -->
       <a class="navbar-brand font-weight-bold text-uppercase text-center"
-         href="/">Fitness Tracker
+         routerLink="">Fitness Tracker
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse"
               data-target="#main-navigation" aria-expanded="false"
@@ -15,14 +17,16 @@ import { Component, OnInit } from '@angular/core';
       </button>
       <div class="collapse navbar-collapse" id="main-navigation">
         <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link" routerLink=""
-             routerLinkActive="active">Home</a>
+          <a class="nav-item nav-link" routerLink="" routerLinkActive="active">Home</a>
+          <a *ngIf="auth.isTrainer" class="nav-item nav-link" routerLink="/workouts" routerLinkActive="active">Workouts</a>
         </div>
         <div class="navbar-nav">
-          <a class="nav-item nav-link pr-0" routerLink="/register"
-             routerLinkActive="active">Register</a>
-          <a class="nav-item nav-link pr-0" routerLink="/login"
-             routerLinkActive="active">Login</a>
+          <a *ngIf="!auth.isAuthenticated" class="nav-item nav-link pr-0" routerLink="/login"
+             routerLinkActive="active">Login/Register</a>
+          <a *ngIf="auth.isAuthenticated" class="nav-item nav-link pr-0" routerLink="/me"
+             routerLinkActive="active">Welcome {{auth.name}}</a>
+          <a *ngIf="auth.isAuthenticated" class="nav-item nav-link pr-0" routerLink="/logout"
+             routerLinkActive="active" (click)="auth.logout()">Logout</a>
         </div>
       </div>
     </nav>
@@ -35,11 +39,6 @@ import { Component, OnInit } from '@angular/core';
       `
   ]
 } )
-export class NavComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class NavComponent {
+  constructor( public auth: AuthService, public webService: WebService ) { }
 }

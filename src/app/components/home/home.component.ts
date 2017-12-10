@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component( {
   selector: 'app-home',
-  template: '<app-workouts></app-workouts>'
+  template: '<app-trainers></app-trainers>'
 } )
 
-export class HomeComponent implements OnInit {
-
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class HomeComponent {}

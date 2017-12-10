@@ -1,50 +1,66 @@
-<!-- Main Container -->
-<div id="main-container">
+<div class="row justify-content-sm-left justify-content-md-center">
+  <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
 
-  <!-- Image Container -->
-  <div class="image-size">
-    <img class="img-fluid" src="/assets/img/banner-lady-gym.jpg">
-  </div>
+    <!-- Registration Panel Placeholder -->
+    <div id="registration-panel-placeholder">
 
-  <!-- Login container -->
-  <div class="container-fluid">
-    <div class="row justify-content-sm-left justify-content-md-center">
-      <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+      <!-- Registration Form -->
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-        <!-- Registration Panel Placeholder -->
-        <div id="registration-panel-placeholder">
-
-          <!-- Registration Form -->
-          <form>
-
-            <div class="form-group">
-              <label for="inputUsername">Username</label>
-              <input type="text" class="form-control" id="inputUsername" placeholder="Zhunio">
-            </div>
-
-            <div class="form-group">
-              <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputEmail" placeholder="your@email.com">
-            </div>
-
-            <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-
-            <button type="submit" class="btn btn-success btn-block">Create account</button>
-
-          </form>
-
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" class="form-control" id="inputFirstName" placeholder="First Name"
+                   formControlName="firstName"
+                   [ngClass]="{'valid': isValid('firstName'), 'invalid': isInvalid('firstName')}">
+          </div>
+          <div class="form-group col-6">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name"
+                   formControlName="lastName"
+                   [ngClass]="{'valid': isValid('lastName'), 'invalid': isInvalid('lastName')}">
+          </div>
         </div>
 
-        <!-- Login Registration Toggle -->
-        <div id="login-registration-toggle">
-          <p class="mb-0">Already a member? <a routerLink="/login">Sign in</a></p>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="your@email.com"
+                 formControlName="email" aria-describedby="emailHelp"
+                 [ngClass]="{'valid': isValid('email'), 'invalid': isInvalid('email')}">
+          <div class="alert alert-danger p-2" role="alert" *ngIf="isInvalid('email')">
+            Provide email in the form of <strong>example@example.com</strong>
+          </div>
         </div>
 
-      </div>
+
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+                 formControlName="password"
+                 [ngClass]="{'valid': isValid('password'), 'invalid': isInvalid('password')}">
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                 formControlName="confirmPassword"
+                 [ngClass]="{'valid': isValid('confirmPassword'), 'invalid': isInvalid('confirmPassword')}">
+          <div class="alert alert-danger p-2" role="alert"
+               *ngIf="form.errors?.mismatchedFields && form.controls.password.touched">
+            Passwords do not match
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Register</button>
+
+      </form>
+
     </div>
-  </div>
 
+    <!-- Login Registration Toggle -->
+    <div id="login-registration-toggle">
+      <p class="mb-0">Already a member? <a routerLink="/login">Sign in</a></p>
+    </div>
+
+  </div>
 </div>
