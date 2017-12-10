@@ -18,7 +18,8 @@ import { WebService } from '../../services/web.service';
       <div class="collapse navbar-collapse" id="main-navigation">
         <div class="navbar-nav mr-auto">
           <a class="nav-item nav-link" routerLink="" routerLinkActive="active">Home</a>
-          <a *ngIf="auth.isTrainer" class="nav-item nav-link" routerLink="/workouts" routerLinkActive="active">Workouts</a>
+          <a *ngIf="auth.isTrainer" class="nav-item nav-link" routerLink="/workouts/new" 
+             routerLinkActive="active">Workouts</a>
         </div>
         <div class="navbar-nav">
           <a *ngIf="!auth.isAuthenticated" class="nav-item nav-link pr-0" routerLink="/login"

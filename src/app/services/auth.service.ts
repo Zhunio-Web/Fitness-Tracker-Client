@@ -24,6 +24,11 @@ export class AuthService {
     return localStorage.getItem( this.NAME_KEY );
   }
 
+  get userId() {
+    let token = this.getTokenKey();
+    return (token) ? this.jwtHelper.decodeToken( token ).user : token;
+  }
+
   get isAuthenticated() {
     return !!this.getTokenKey();
   }

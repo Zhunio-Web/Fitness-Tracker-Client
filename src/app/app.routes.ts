@@ -22,6 +22,12 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'workouts/new',
+    canActivate: [AuthGuardService],
+    component: NewWorkoutDetailComponent,
+    pathMatch: 'full'
+  },
+  {
     path: 'workouts/:name/:trainerId',
     canActivate: [AuthGuardService],
     component: WorkoutsComponent,

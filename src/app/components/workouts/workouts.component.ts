@@ -33,7 +33,7 @@ export class WorkoutsComponent implements OnInit, OnDestroy {
   private subscription: ISubscription;
 
   constructor( public webService: WebService, private route: ActivatedRoute,
-               private router: Router, private ts: TrainerStoreService) {}
+               private router: Router, private ts: TrainerStoreService ) {}
 
   ngOnInit() {
     this.webService.getWorkouts( this.route.snapshot.params.trainerId );

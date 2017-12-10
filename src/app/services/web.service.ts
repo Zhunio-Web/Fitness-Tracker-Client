@@ -48,9 +48,9 @@ export class WebService {
   }
 
   getWorkouts( trainerId: string ) {
-    const url = BASE_URL + '/trainers/workouts';
+    const url = BASE_URL + '/trainers/workouts' + '/' + trainerId;
 
-    this.get<ITrainer>( url + '/' + trainerId )
+    this.get<ITrainer>( url )
       .subscribe( trainer => {
           this.ts.add( trainer );
           this.trainerSubject.next( trainer );
@@ -60,7 +60,8 @@ export class WebService {
   }
 
   postWorkouts( workout: Workout ) {
-    const url = BASE_URL + '/workouts';
+    const url = BASE_URL + '/workouts' + '/new';
+
     this.post( url, { workout: workout } ).subscribe(
       response => this.successResponse( response ),
       err => this.errorHandler( err )

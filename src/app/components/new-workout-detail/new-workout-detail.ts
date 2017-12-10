@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Exercise, Workout } from '../../models/workouts';
 import { NewExercisesComponent } from '../new-exercise/new-exercise.component';
 import { WebService } from '../../services/web.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component( {
   selector: 'app-new-workout-detail',
@@ -13,13 +14,18 @@ export class NewWorkoutDetailComponent implements OnInit {
 
   newWorkout: Workout;
 
-  constructor( private webService: WebService ) { }
+  defaultImage = 'https://d2z0k43lzfi12d.cloudfront.net/blog/vcdn176/wp-content/uploads/2017/06/09.06._Things-you-should-never-do-after-a-workout-1.jpg';
+
+  constructor( private webService: WebService, private auth: AuthService ) { }
 
   ngOnInit() {
     this.reset();
   }
 
   postWorkout() {
+    if ( !this.newWorkout.picture )
+      this.newWorkout.picture = this.defaultImage;
+
     this.webService.postWorkouts( this.newWorkout );
     this.reset();
   }
