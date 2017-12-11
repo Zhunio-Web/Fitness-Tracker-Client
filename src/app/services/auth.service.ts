@@ -10,7 +10,7 @@ import { TrainerStoreService } from './trainer-store.service';
 @Injectable()
 export class AuthService {
 
-  private AUTH_URL = 'https://fitness-tracker-server-zhunio.c9users.io/auth';
+  private AUTH_URL = 'http://192.168.0.18:3000/auth';
   private readonly NAME_KEY = 'name';
   private readonly TOKEN_KEY = 'token';
 
