@@ -10,7 +10,7 @@ import { TrainerStoreService } from './trainer-store.service';
 import { IUser } from '../models/users';
 import { Observable } from 'rxjs/Observable';
 
-const BASE_URL = 'https://fitness-tracker-server-zhunio.c9users.io/api';
+const BASE_URL = 'http://192.168.0.18:3000/api';
 
 @Injectable()
 export class WebService {

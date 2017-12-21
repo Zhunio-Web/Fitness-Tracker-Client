@@ -49,7 +49,7 @@ export class WorkoutDetailComponent implements OnInit, OnDestroy {
     this.safeEmbed = this.getVideoUrl(exercise.embed);
   }
 
-  getVideoUrl(embed) {
+  getVideoUrl(embed): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://www.youtube.com/embed/' + embed );
   }
