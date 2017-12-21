@@ -6,7 +6,7 @@
              src="{{workout.picture}}"
              alt="{{workout.name}}">
         <iframe *ngIf="videoExists()" class="card-img-top" height="250px"
-                [src]="getVideoUrl()" allowfullscreen></iframe>
+                [src]="safeEmbed" allowfullscreen></iframe>
         <div class="card-body p-2 bg-info">
           <h4 class="card-title m-0" style="color: #002339;">{{workout.name}}
             Workout</h4>

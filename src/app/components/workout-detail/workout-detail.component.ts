@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Exercise, Workout } from '../../models/workouts';
 import { TrainerStoreService } from '../../services/trainer-store.service';
@@ -14,7 +14,7 @@ import { ISubscription } from 'rxjs/Subscription';
 export class WorkoutDetailComponent implements OnInit, OnDestroy {
 
   workout: Workout;
-  embed = '';
+  safeEmbed: SafeResourceUrl;
   subscription: ISubscription;
   currentExercise;
 
@@ -46,16 +46,16 @@ export class WorkoutDetailComponent implements OnInit, OnDestroy {
 
   loadVideo( exercise: Exercise ) {
     this.currentExercise = exercise;
-    this.embed = exercise.embed;
+    this.safeEmbed = this.getVideoUrl(exercise.embed);
   }
 
-  getVideoUrl() {
+  getVideoUrl(embed) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(
-      'https://www.youtube.com/embed/' + this.embed );
+      'https://www.youtube.com/embed/' + embed );
   }
 
   videoExists() {
-    return !!this.embed;
+    return !!this.safeEmbed;
   }
 
   pictureExists() {
