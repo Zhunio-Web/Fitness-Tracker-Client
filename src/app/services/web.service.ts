@@ -58,6 +58,12 @@ export class WebService {
         err => this.errorHandler( err )
       );
   }
+  
+  postRecommendedWorkouts(workout: Workout) {
+    const url = BASE_URL + '/workouts';
+    
+    return this.http.post<Workout[]>( url, workout, this.auth.tokenHeader );
+  }
 
   postWorkouts( workout: Workout ) {
     const url = BASE_URL + '/workouts' + '/new';
